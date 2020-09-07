@@ -32,7 +32,33 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.w3-container {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.w3-bar-item {
+  width: 85px;
+  padding: 8px 16px;
+  float: left;
+  display: block;
+  outline: none;
+}
+.w3-bar .w3-bar-item{
+  width: 85px !important;
+}
+.card {
+ border: none;
+}
+.w3-ul li{
+  border-bottom: none;
+}
+.w3-ul {
+  border-bottom: 1px solid #dedcdc;
 }

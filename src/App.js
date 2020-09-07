@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {
+  Component
+} from 'react';
+import Data from './components/Data';
 import './App.css';
+// const fs = require('fs');
+// import fs from 'fs'
+// http: //jsonplaceholder.typicode.com/users
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: []
+    };
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:8000/')
+      .then(res => res.json())
+      .then((data) => {
+        console.log(typeof data)
+        console.log(data);
+
+        this.setState({
+          data: data.picks
+        })
+      })
+      .catch(console.log)
+  }
+  render() {
+    return (
+      <div>
+        <Data key = {this.state.data.element} data = {this.state.data}/> 
+      </div>
+    )
+  }
+
 }
 
 export default App;
+// content type application/json
