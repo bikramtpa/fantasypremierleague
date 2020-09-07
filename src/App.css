@@ -39,8 +39,9 @@
 }
 
 .w3-container {
-  width: 60%;
+  width: 65%;
   margin: 0 auto;
+  background-color: #e2e2e2;
 }
 
 .w3-bar-item {
@@ -50,15 +51,23 @@
   display: block;
   outline: none;
 }
-.w3-bar .w3-bar-item{
+
+.w3-bar .w3-bar-item {
   width: 85px !important;
 }
+
 .card {
- border: none;
+  border: none;
 }
-.w3-ul li{
+
+.w3-ul li {
   border-bottom: none;
 }
+
 .w3-ul {
   border-bottom: 1px solid #dedcdc;
+}
+
+.w3-ul li:last-child {
+  display: flex;
 }
