@@ -2,7 +2,7 @@ import React, {
   Component
 } from 'react';
 import Data from './components/Data';
-import Events from './components/Events';
+ import Events from './components/Events';
 import './App.css';
 // const fs = require('fs');
 // import fs from 'fs'
@@ -24,7 +24,7 @@ class App extends Component {
   componentDidMount() {
     let promisereturndatafiles = fetch(urls[0]);
     let promisereturneventsfile = fetch(urls[1]);
-
+    
     Promise.all([promisereturndatafiles, promisereturneventsfile])
       .then(async ([fordata, forevents]) => {
         const datas = await fordata.json();
@@ -45,26 +45,13 @@ class App extends Component {
         console.log(err);
       });
   }
-
+  
   render() {
-    return ( <
-      div >
-      <
-      Data key = {
-        Math.random()
-      }
-      data = {
-        this.state.data
-      }
-      /> <
-      Events key = {
-        Math.random()
-      }
-      events = {
-        this.state.events
-      }
-      /> <
-      /div>
+    return (
+      <div>
+        <Data key={Math.random()} data={this.state.data} />
+        <Events key={Math.random()} events={this.state.events} />
+      </div>
     )
   }
 }
