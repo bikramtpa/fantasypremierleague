@@ -18,10 +18,10 @@ const Data = ({data}) => {
                                  <img src={kane} alt="player" className="w3-bar-item w3-circle w3-hide-small"/>
                                 {data[key].element}
                             </li>
-                            <li className="w3-bar" key={data[key].element}>DeadLine: {index.element}</li>
+                            <li className="w3-bar" key={data[key].element}>purchase_price: {data[key].purchase_price}</li>
                         </ul>
                          <a href="#" className="card-link" > Previous Week </a>
-                                <a href = "#" className = "card-link" > Next Week </a>
+                         <a href = "#" className = "card-link" > Next Week </a>
                     </div>
                 </div>
             ))}

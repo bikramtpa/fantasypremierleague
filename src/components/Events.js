@@ -9,16 +9,18 @@ const Events = ({events}) => {
             {Object.keys(events).map((key, index) => (
                 <div className="card">
                     <div className="card-body w3-card-4">
-                        <h5 className="card-title"> Kevin De Bryane </h5>
+                        <h5 className="card-title"> {events[key].name} </h5>
                         <h6 className="card-subtitle mb-2 text-muted">Attacking Midfielder</h6>
 
                         <ul className="w3-ul">
-                            <li className="w3-bar">
-                                 <img src={kane} alt="player" className="w3-bar-item w3-circle w3-hide-small"/>
-                                {events[key].name}
+                            <li className="w3-bar" key={events[key].id}>
+                                <img src={kane} alt="player" className="w3-bar-item w3-circle w3-hide-small" />
+                                Additional Details comming soon
+                            </li>
+                            <li className="w3-bar" key={events[key].id}>
+                                DeadLine: {events[key].deadline_time}
                             </li>
                         </ul>
-                        
                     </div>
                 </div>
             ))}
