@@ -2,7 +2,7 @@ import React, {
   Component
 } from 'react';
 import Data from './components/Data';
- import Events from './components/Events';
+import Events from './components/Events';
 import './App.css';
 // const fs = require('fs');
 // import fs from 'fs'
@@ -24,45 +24,47 @@ class App extends Component {
   componentDidMount() {
     let promisereturndatafiles = fetch(urls[0]);
     let promisereturneventsfile = fetch(urls[1]);
-    
+
     Promise.all([promisereturndatafiles, promisereturneventsfile])
-      .then(files => {
-        console.log("the files", files);
-        files.forEach(file => {
-          process(file.json());
-        })
+      .then(async ([fordata, forevents]) => {
+        const datas = await fordata.json();
+        const events = await forevents.json();
+        return [datas, events]
       })
-      .catch(error => console.error(error));
-    let process = (prom) => {
-      prom.then(item => {
-        console.log(typeof item)
-        console.log("item is", item.picks)
-        console.log("Just Item", item)
-        
-        console.log("Item keys", item)
-        console.log("Item values", Object.values(item))
-        console.log("Item value 1", Object.values(item)[1])
+      .then((responseText) => {
+        console.log("responseText", responseText);
+        console.log("data", responseText[0]);
+        console.log("Hi", Object.values(responseText));
+        console.log(responseText[1]);
+
         this.setState({
-          data: item[Object.keys(item)[0]],
-          events: [{
-            status_for_entry: "available",
-            played_by_entry: Array(0),
-            name: "bboost",
-            number: 1
-          }]
-          
+          data: responseText[0].picks,
+          events: responseText[1].events,
         });
-        
-      })
-    } 
+      }).catch((err) => {
+        console.log(err);
+      });
   }
-  
+
   render() {
-    return (
-      <div>
-        <Data key={Math.random()} data={this.state.data} />
-        <Events key={Math.random()} events={this.state.events} />
-      </div>
+    return ( <
+      div >
+      <
+      Data key = {
+        Math.random()
+      }
+      data = {
+        this.state.data
+      }
+      /> <
+      Events key = {
+        Math.random()
+      }
+      events = {
+        this.state.events
+      }
+      /> <
+      /div>
     )
   }
 }

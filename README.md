@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 
-<img src="https://i.ibb.co/Q8360T8/Screenshot-2020-09-07-at-22-47-46.png" alt="how it looks" />
+<img src="https://i.ibb.co/nmnbSTx/Screenshot-2020-09-08-at-11-58-42.png" alt="Fixed Promise all for both data and events" />
 ## Available Scripts
 
 In the project directory, you can run:
