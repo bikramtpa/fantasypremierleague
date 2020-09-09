@@ -2,9 +2,9 @@ import React, {
   Component
 } from 'react';
 import Data from './components/Data';
- // import Events from './components/Events';
- import Elements from './components/Elements';
- import Gamesettings from './components/Gamesettings';
+import Events from './components/Events';
+import Elements from './components/Elements';
+import Gamesettings from './components/Gamesettings';
 import './App.css';
 
 const urls = [
@@ -71,8 +71,8 @@ class App extends Component {
           <Elements key={Math.random()} elements={this.state.elements} />
         </div>
         <div className="two">
-          {/* <Events key={Math.random()} events={this.state.events} /> */}
-          <Gamesettings key={Math.random()} gamesettings={this.state.gamesettings} />
+          <Events key={Math.random()} events={this.state.events} /> 
+    {/* <Gamesettings key={Math.random()} gamesettings={this.state.gamesettings} /> */}
         </div>
       </section>
       

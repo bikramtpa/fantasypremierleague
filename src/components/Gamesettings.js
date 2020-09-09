@@ -15,7 +15,7 @@ const Gamesettings = ({gamesettings}) => {
                         <h6 className="card-subtitle mb-2 text-muted">Strength: {gamesettings[key].strength} || strength_attack_home: {gamesettings[key].strength_attack_home}</h6>
                         <ul>
                             <li>Strength_defence_home : {gamesettings[key].strength_defence_home}</li>
-                            <li>Next match with : Unknown</li>
+                            <li>Next match against : Unknown</li>
                             <li>pulse id : {gamesettings[key].pulse_id}</li>
                         </ul>
                     </div>
