@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 
-<img src="https://i.ibb.co/5Mk2dMB/Screenshot-2020-09-08-at-15-48-54.png" alt="UI so far" />
+<img src="https://i.ibb.co/QrrSTHY/Screenshot-2020-09-09-at-14-51-44.png" alt="UI so far" />
 ## Available Scripts
 
 In the project directory, you can run:

@@ -19,6 +19,10 @@ app.get('/elements', cors(), function (request, response) {
     let eventsdata = JSON.parse(fs.readFileSync('./src/datasource/elements.json', 'utf-8'))
     response.send(eventsdata);
 });
+app.get('/gamesettings', cors(), function (request, response) {
+    let eventsdata = JSON.parse(fs.readFileSync('./src/datasource/gamesettings.json', 'utf-8'))
+    response.send(eventsdata);
+});
 
 
 app.listen('8000');

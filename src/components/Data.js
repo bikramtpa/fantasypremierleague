@@ -5,7 +5,7 @@ import '../App.css'
 const Data = ({data}) => {
     return (
         <div className="w3-container">
-            <center><h2>Players</h2></center>
+            <center><h4>Players</h4></center>
             {
                 Object.keys(data).map((key, index, arrayobj) => (
                 <div className="card">

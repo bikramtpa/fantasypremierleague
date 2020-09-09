@@ -5,7 +5,7 @@ import '../App.css'
 const Elements = ({ elements }) => {
     return (
         <div className="w3-container">
-            <center><h2>Player's Details</h2></center>
+            <center><h4>Player's Details</h4></center>
             {
                 Object.keys(elements).map((key, index) => (
                     
