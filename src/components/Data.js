@@ -1,27 +1,31 @@
 import React from 'react'
-import kane from './kane.jpg'
 import '../App.css'
 
-const Data = ({data}) => {
+const Data = ({ myTeam, elements }) => {
+    
     return (
         <div className="w3-container">
             <center><h4>Players</h4></center>
             {
-                Object.keys(data).map((key, index, arrayobj) => (
-                <div className="card">
+                Object.keys(myTeam).map((key, index, arrayobj) => (
+                <div className="card" key={index}>
                     <div className="card-body w3-card-4">
-                        <h5 className="card-title"> Kevin De Bryane </h5>
-                        <h6 className="card-subtitle mb-2 text-muted">Attacking Midfielder</h6>
 
                         <ul className="w3-ul">
-                            <li className="w3-bar" key={Math.random()}>
-                                 <img src={kane} alt="player" className="w3-bar-item w3-circle w3-hide-small"/>
-                                {data[key].element}
+                                <li className="w3-bar" key={Math.random()}>
+                                    <img src={process.env.PUBLIC_URL + '/images/' + myTeam[index] + '.png'} alt="player" />
+                                    
+                                    total Points: {elements[1][index]} <br />
+                                    selected By: {elements[2][index]} %<br />
+                                    nowCost: {(elements[3][index])/10} £<br />
+                                    assists: {(elements[4][index])} <br />
+                                    <b>goalsScored: {(elements[5][index])}</b> <br />
                             </li>
-                            <li className="w3-bar" key={data[key].element}>purchase_price: {data[key].purchase_price}</li>
+                                <li className="w3-bar" key={myTeam[key].element}>Second Name: <b>{elements[0][index]}</b> <br /></li>
+                                <a href="#" className="card-link btn btn-outline-primary btn-sm"> Previous Week </a>
+                                <a href = "#" className = "card-link btn btn-primary btn-sm"> Next Week </a>
                         </ul>
-                         <a href="#" className="card-link" > Previous Week </a>
-                         <a href = "#" className = "card-link" > Next Week </a>
+                        
                     </div>
                 </div>
             ))}
