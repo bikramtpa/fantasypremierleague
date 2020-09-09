@@ -31,8 +31,8 @@ const Elements = ({ elements }) => {
                                 Team: {elements[key].team}, 
                                 Team Code: {elements[key].team_code}
                             </li>
-                            <a href="#" className="card-link btn btn-outline-primary btn-sm" > Previous Week </a>
-                            <a href = "#" className = "card-link btn btn-primary btn-sm" > Next Week </a>
+                            <a href="#" className="card-link btn btn-outline-primary btn-sm"> Previous Week </a>
+                            <a href = "#" className = "card-link btn btn-primary btn-sm"> Next Week </a>
                             </ul>
                     </div>
                 </div>

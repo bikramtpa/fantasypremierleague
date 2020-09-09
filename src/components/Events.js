@@ -7,7 +7,7 @@ const Events = ({events}) => {
         <div className="w3-container">
             <center><h4>Events</h4></center>
             {Object.keys(events).map((key, index) => (
-                <div className="card">
+                <div className="card" key={index}>
                     <div className="card-body w3-card-4">
                         <h5 className="card-title"> {events[key].name} </h5>
                         <h6 className="card-subtitle mb-2 text-muted">Manchester City || Opponent: Liverpool</h6>
