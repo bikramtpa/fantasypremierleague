@@ -106,6 +106,8 @@ body {
     margin-right: auto;
     display: block; */
   float: left;
+  width: 100px;
+  margin-right: 2em;
 }
 
 .w3-card-4 {
@@ -115,14 +117,17 @@ body {
 center h4 {
   color: darkslategrey;
 }
-.list-group .list-group-item{
+
+.list-group .list-group-item {
   text-align: center;
 }
+
 .next {
   background-color: #4CAF50;
   color: white;
   padding: 2px 12px;
 }
+
 .round {
   border-radius: 50%;
 }
