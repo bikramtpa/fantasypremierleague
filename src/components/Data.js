@@ -5,7 +5,7 @@ const Data = ({ myTeam, elements }) => {
     
     return (
         <div className="w3-container">
-            <center><h4>Players</h4></center>
+            <center><h4>My FPL Team Players</h4></center>
             {
                 Object.keys(myTeam).map((key, index, arrayobj) => (
                 <div className="card" key={index}>
@@ -19,9 +19,7 @@ const Data = ({ myTeam, elements }) => {
                                 assists: {(elements[4][index])} <br />
                                 <b>goalsScored: {(elements[5][index])}</b> <br />
                             </li>
-                            <li className="w3-bar" key={myTeam[key].element}>Second Name: <b>{elements[0][index]}</b> <br /></li>
-                            <a href="#" className="card-link btn btn-outline-primary btn-sm"> Previous Week </a>
-                            <a href = "#" className = "card-link btn btn-primary btn-sm"> Next Week </a>
+                            <li className="w3-bar" key={myTeam[key].element}><b>{elements[0][index]}</b> <br /></li>
                         </ul>
                     </div>
                 </div>

@@ -1,12 +1,10 @@
 import React from 'react'
-import kane from './kane.jpg'
 import '../App.css'
 
 const Gamesettings = ({gamesettings}) => {
     return (
         <div className="w3-container">
             <center><h4>Clubs</h4></center>
-            {/* typeof gamesettings */}
             {
                 Object.keys(gamesettings).map((key, index) => (
                 <div className="card">

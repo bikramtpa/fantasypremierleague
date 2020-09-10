@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Data from './components/Data';
 import Events from './components/Events';
+import AllPlayers from './components/AllPlayers';
 import './App.css';
 
 const urls = [
@@ -27,6 +28,7 @@ class App extends Component {
       elements: [],
       fixtures: [],
       gameweeks: [],
+      allPlayers: [],
     };
   }
 
@@ -57,7 +59,10 @@ class App extends Component {
         let elements = responseText[0].elements;
         let fixtures = responseText[4];
         let gameweeks = responseText[5].fixtures;
-        console.log("gameweeks", gameweeks)
+        let allplayers = responseText[0].elements;
+        console.clear();
+        allplayers = Object.keys(allplayers).map((key, index) => allplayers[key].first_name)
+        console.log("allplayers", allplayers)
 
         let tofindfrommyTeam = Object.keys(picks).map((key, index) => { return  picks[key].element });
         let tofindfromElements = Object.keys(elements).map((key, index) => { return elements[key].id });
@@ -88,7 +93,9 @@ class App extends Component {
               imgcode.push(elements[key].code);
               // for(let k in elements)
               // playerdetails.push(k);
-              playerdetails.push(elements[key].second_name);
+              let first_name = elements[key].first_name;
+              let second_name = elements[key].second_name;
+              playerdetails.push(first_name + " " + second_name);
               totalPoints.push(elements[key].total_points);
               selectedPercentage.push(elements[key].selected_by_percent);
               nowCost.push(elements[key].now_cost);
@@ -101,7 +108,8 @@ class App extends Component {
           myTeam: imgcode,
           events: responseText[0].events,
           elements: [playerdetails, totalPoints, selectedPercentage, nowCost, assists, goalsScored],
-          fixtures: [fixtures]
+          fixtures: [fixtures],
+          allPlayers: allplayers
         });
       }).catch((err) => {
         console.log(err);
@@ -117,6 +125,8 @@ class App extends Component {
         </div>
         <div className="two">
         <Events events={this.state.events} fixtures={this.state.fixtures}/>
+        
+        <AllPlayers allPlayers={this.state.allPlayers} />
         </div>
       </section>
       
