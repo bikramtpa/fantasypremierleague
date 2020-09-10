@@ -128,3 +128,22 @@ center h4 {
 .round {
   border-radius: 50%;
 }
+
+.col-tabs {
+  background-color: #37073c;
+  color: aqua;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+}
+
+.row {
+  margin: 0 !important;
+}
+
+.inline li {
+  list-style: none;
+  float: left;
+  padding: 5px 10px;
+  border: 1px solid #eee;
+  width: 50%;
+}
