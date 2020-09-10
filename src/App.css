@@ -102,9 +102,6 @@ body {
 }
 
 .w3-bar img {
-  /* margin-left: auto;
-    margin-right: auto;
-    display: block; */
   float: left;
   width: 100px;
   margin-right: 2em;
