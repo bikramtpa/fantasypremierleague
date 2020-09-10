@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 
-<img src="https://i.ibb.co/xYpkrLW/Screenshot-2020-09-10-at-1-03-09.png" alt="Own Team's Player details" />
+<img src="https://i.ibb.co/7Gpy56h/Screenshot-2020-09-10-at-14-50-33.png" alt="GameWeek 1 Fixtures" />
 ## Available Scripts
 
 In the project directory, you can run:

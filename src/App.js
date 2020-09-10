@@ -9,6 +9,8 @@ const urls = [
   'http://localhost:8000/events', 
   'http://localhost:8000/elements', 
   'http://localhost:8000/gamesettings',
+  'http://localhost:8000/fixtures',
+  'http://localhost:8000/gameweeks',
   'https://fantasy.premierleague.com/api/fixtures/',
   'https://fantasy.premierleague.com/api/element-summary/1/',
   'https://fantasy.premierleague.com/api/event/1/live/',
@@ -23,6 +25,8 @@ class App extends Component {
       myTeam: [],
       events: [],
       elements: [],
+      fixtures: [],
+      gameweeks: [],
     };
   }
 
@@ -31,14 +35,18 @@ class App extends Component {
     let promisereturneventsfile = fetch(urls[1]);
     let promisereturnelementsfile = fetch(urls[2]);
     let promisereturngamesettingsfile = fetch(urls[3]);
+    let promisereturnfixturesfile = fetch(urls[5]);
+    let promisereturngameweeks = fetch(urls[6]);
     
-    Promise.all([promisereturndatafiles, promisereturneventsfile, promisereturnelementsfile, promisereturngamesettingsfile])
-      .then(async ([fordata, forevents, forelements, forgamesettings]) => {
+    Promise.all([promisereturndatafiles, promisereturneventsfile, promisereturnelementsfile, promisereturngamesettingsfile, promisereturnfixturesfile, promisereturngameweeks])
+      .then(async ([fordata, forevents, forelements, forgamesettings, forfixtures, forgameweeks]) => {
         const datas = await fordata.json();
         const events = await forevents.json();
         const elements = await forelements.json();
         const gamesettings = await forgamesettings.json();
-        return [datas, events, elements, gamesettings]
+        const fixtures = await forfixtures.json();
+        const gameweeks = await forgameweeks.json();
+        return [datas, events, elements, gamesettings, fixtures, gameweeks]
       })
       .then((responseText) => {
 
@@ -47,7 +55,10 @@ class App extends Component {
 
         let picks = responseText[1].picks;
         let elements = responseText[0].elements;
-        
+        let fixtures = responseText[4];
+        let gameweeks = responseText[5].fixtures;
+        console.log("gameweeks", gameweeks)
+
         let tofindfrommyTeam = Object.keys(picks).map((key, index) => { return  picks[key].element });
         let tofindfromElements = Object.keys(elements).map((key, index) => { return elements[key].id });
         
@@ -90,6 +101,7 @@ class App extends Component {
           myTeam: imgcode,
           events: responseText[0].events,
           elements: [playerdetails, totalPoints, selectedPercentage, nowCost, assists, goalsScored],
+          fixtures: [fixtures]
         });
       }).catch((err) => {
         console.log(err);
@@ -104,7 +116,7 @@ class App extends Component {
         <Data myTeam={this.state.myTeam} elements={this.state.elements}/>
         </div>
         <div className="two">
-        <Events events={this.state.events} />
+        <Events events={this.state.events} fixtures={this.state.fixtures}/>
         </div>
       </section>
       

@@ -31,6 +31,14 @@ app.get('/bootstrap-static', cors(), function (request, response) {
     let eventsdata = JSON.parse(fs.readFileSync('./src/datasource/bootstrap-static.json', 'utf-8'))
     response.send(eventsdata);
 });
+app.get('/fixtures', cors(), function (request, response) {
+    let eventsdata = JSON.parse(fs.readFileSync('./src/datasource/fixtures.json', 'utf-8'))
+    response.send(eventsdata);
+});
+app.get('/gameweeks', cors(), function (request, response) {
+    let eventsdata = JSON.parse(fs.readFileSync('./src/datasource/gameweeks.json', 'utf-8'))
+    response.send(eventsdata);
+});
 
 
 app.listen('8000');
