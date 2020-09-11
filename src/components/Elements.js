@@ -8,7 +8,6 @@ const Elements = ({ elements }) => {
             <center><h4>Player's Details</h4></center>
             {
                 Object.keys(elements).map((key, index) => (
-                    
                 <div className="card">
                     <div className="card-body w3-card-4">
                         <h5 className="card-title"> {elements[key].name} </h5>
@@ -33,7 +32,7 @@ const Elements = ({ elements }) => {
                             </li>
                             <a href="#" className="card-link btn btn-outline-primary btn-sm"> Previous Week </a>
                             <a href = "#" className = "card-link btn btn-primary btn-sm"> Next Week </a>
-                            </ul>
+                        </ul>
                     </div>
                 </div>
             ))}

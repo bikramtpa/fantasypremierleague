@@ -147,3 +147,6 @@ center h4 {
   border: 1px solid #eee;
   width: 50%;
 }
+.gameweeks-span {
+  padding-right: 1em;
+}

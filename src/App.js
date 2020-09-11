@@ -58,7 +58,7 @@ class App extends Component {
         let picks = responseText[1].picks;
         let elements = responseText[0].elements;
         let fixtures = responseText[4];
-        let gameweeks = responseText[5].fixtures;
+        let events = responseText[0].events;
         let allplayers = responseText[0].elements;
         console.clear();
         allplayers = Object.keys(allplayers).map((key, index) => allplayers[key].first_name)
@@ -106,7 +106,7 @@ class App extends Component {
         })
         this.setState({
           myTeam: imgcode,
-          events: responseText[0].events,
+          events: events,
           elements: [playerdetails, totalPoints, selectedPercentage, nowCost, assists, goalsScored],
           fixtures: [fixtures],
           allPlayers: allplayers
