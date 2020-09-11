@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import kane from './kane.jpg'
 import '../App.css'
 import { getKeys } from 'eslint-visitor-keys';
@@ -19,23 +19,40 @@ import { getKeys } from 'eslint-visitor-keys';
 // and the condition for == null change to !== && ||
 const Events = ({ events, fixtures }) => {
    //const keys = Object.keys(fixtures);
+    const [count, setCount] = useState(0);
+    function handleClick(e) {
+        e.preventDefault();
+        //console.log('The link was clicked.');
+        return setCount(count + 1)
+    }
     
     return (
         <div className="w3-container">
             
             <center><h4>Events</h4></center>
             {Object.keys(fixtures).map((key, index)  => (
-                <div className="card" key={index}>
+                <div className="card" key={key}>
                     <div className="card-body w3-card-4">
-                        <h5 className="card-title"> {events[index].name} <a href="#" class="next round">&#8250;</a></h5>
+                        <h5 className="card-title"> <span className="gameweeks-span">{events[count].name}</span>
+                            <button onClick={handleClick} href="#" class="next round">&#8250;</button></h5>
+                            {/*<p>You clicked {count} times</p> */}
                         
                         <h6 className="card-subtitle mb-2 text-muted">{Object.keys(events).map((key, eventsindex) => {
-                            for (let i = 0; i <= eventsindex; i++) {
-                                if (fixtures[0][eventsindex].event == null || fixtures[0][eventsindex].event === 1) {
-                                    return <ul class="list-group"> <li class="list-group-item"> {fixtures[0][eventsindex].team_h} VS {fixtures[0][eventsindex].team_a} </li></ul>
-                                }
+                            //for (let i = 0; i <= eventsindex; i++) {
+                            
+                            // if (fixtures[0][eventsindex].event == null || fixtures[0][eventsindex].event === 1) {
+                            //     return <ul class="list-group"> <li class="list-group-item"> {fixtures[0][0].team_h} VS {fixtures[0][0].team_a} </li></ul>
+                            // }
+                            if (fixtures[0][eventsindex].event === count +1) {
+                                return  <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <img width="50" height="50" src={process.env.PUBLIC_URL + '/clublogos/' + fixtures[0][eventsindex].team_h + '.jpg'} alt = "player" />
+                                                {fixtures[0][eventsindex].team_h} VS {fixtures[0][eventsindex].team_a}
+                                                <img width="50" height="50" src={process.env.PUBLIC_URL + '/clublogos/' + fixtures[0][eventsindex].team_a + '.jpg'} alt = "player" />
+                                            </li>
+                                        </ul>
                             }
-                            })}
+                        })}
                         </h6>
                         <ul className="w3-ul">
                             <li className="w3-bar" key={events[key].id}>
