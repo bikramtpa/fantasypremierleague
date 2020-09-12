@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Data from './components/Data';
 import Events from './components/Events';
-import AllPlayers from './components/AllPlayers';
+import MyPlayers from './components/MyPlayers';
 import './App.css';
 
 const urls = [
@@ -126,7 +126,7 @@ class App extends Component {
         <div className="two">
         <Events events={this.state.events} fixtures={this.state.fixtures}/>
         
-        <AllPlayers allPlayers={this.state.allPlayers} />
+        <MyPlayers myTeam={this.state.myTeam} elements={this.state.elements}events={this.state.events} fixtures={this.state.fixtures}/>
         </div>
       </section>
       

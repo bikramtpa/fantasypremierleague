@@ -5,13 +5,13 @@ import { getKeys } from 'eslint-visitor-keys';
 
 
 
-// const clubs = ["Arsenal", "Aston Villa", "Brighton & Hove Albion", "Burnley", "Chelsea",
-//     "Crystal Palace",
-//     "Everton", "Fulham", "Leeds United", "Leicester City", "Liverpool", "Manchester City",
-//     "Manchester United", "Newcastle United", "Sheffield United",
-//     "Southampton", "Tottenham Hotspur", "West Bromwich Albion", "West Ham United",
-//     "Wolverhampton", "Wanderers"
-// ]
+const clubs = ["null", "Arsenal", "Aston Villa", "Brighton", "Burnley", "Chelsea",
+    "Crystal Palace",
+    "Everton", "Fulham", "Leeds utd.", "Leicester City", "Liverpool", "Manchester City",
+    "Manchester utd.", "Newcastle utd.", "Sheff utd.",
+    "Southampton", "Tottenham", "West Brom", "West Ham",
+    "Wolves", "Wanderers"
+]
 
 // Idea for Next button implementation for different gameweeks
 // fixtures[0][eventsindex].event === 1  make this 1 dynamically change from UI or,
@@ -38,17 +38,13 @@ const Events = ({ events, fixtures }) => {
                             {/*<p>You clicked {count} times</p> */}
                         
                         <h6 className="card-subtitle mb-2 text-muted">{Object.keys(events).map((key, eventsindex) => {
-                            //for (let i = 0; i <= eventsindex; i++) {
                             
-                            // if (fixtures[0][eventsindex].event == null || fixtures[0][eventsindex].event === 1) {
-                            //     return <ul class="list-group"> <li class="list-group-item"> {fixtures[0][0].team_h} VS {fixtures[0][0].team_a} </li></ul>
-                            // }
-                            if (fixtures[0][eventsindex].event === count +1) {
+                            if (fixtures[0][eventsindex].event === count + 1) {
                                 return  <ul class="list-group">
                                             <li class="list-group-item">
-                                                <img width="50" height="50" src={process.env.PUBLIC_URL + '/clublogos/' + fixtures[0][eventsindex].team_h + '.jpg'} alt = "player" />
-                                                {fixtures[0][eventsindex].team_h} VS {fixtures[0][eventsindex].team_a}
-                                                <img width="50" height="50" src={process.env.PUBLIC_URL + '/clublogos/' + fixtures[0][eventsindex].team_a + '.jpg'} alt = "player" />
+                                                <img className="left-team" width="50" height="50" src={process.env.PUBLIC_URL + '/clublogos/' + fixtures[0][eventsindex].team_h + '.jpg'} alt = "player" />
+                                                <span className="fixture-text-center">{clubs[fixtures[0][eventsindex].team_h]} VS {clubs[fixtures[0][eventsindex].team_a]}</span>
+                                                <img className="right-team" width="50" height="50" src={process.env.PUBLIC_URL + '/clublogos/' + fixtures[0][eventsindex].team_a + '.jpg'} alt = "player" />
                                             </li>
                                         </ul>
                             }
