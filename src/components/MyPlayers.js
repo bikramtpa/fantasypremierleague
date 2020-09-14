@@ -15,7 +15,6 @@ const MyPlayers = ({ myTeam, elements, myPlayersTeam, events, fixtures, MyTeamMa
         }
         return count
     }
-    const storereturn = handleClick();
     return (
         <div className="w3-container">
             <center><h4>My Team's Fixtures</h4></center>
@@ -35,24 +34,7 @@ const MyPlayers = ({ myTeam, elements, myPlayersTeam, events, fixtures, MyTeamMa
                             <li className="li-left" key={Math.random()}>
                                 {elements[0][index]}
                             </li>
-                            {/*<li className="li-right" key={myTeam[key]}> {myPlayersTeam[key]} </li>*/}
-                                <span>
-                                    {/* myPlayersTeam[key] */}
-                                    {/*MyTeamMatchagainst[key]*/}
-                                    <img className="right-team" width="50" height="50" src={process.env.PUBLIC_URL + '/clublogos/' + MyTeamMatchagainst[key] + '.jpg'} alt = "player" /> 
-                                        {
-                                        Object.keys(fixtures).map((key, eventsindex) => {
-                                        // if (myPlayersTeam[key] === fixtures[key].team_h) {
-                                        //     return <ul class="list-group">
-                                        //         <li class="list-group-item">
-                                        //             <span className="fixture-text-center">{fixtures[0][eventsindex].team_a}</span>
-                                        //         </li>
-                                        //     </ul>
-                                        // }
-                                        return <li>{fixtures[eventsindex].team_a}</li>
-                                    }
-                                )}
-                            </span>
+                           <img className="right-team" width="50" height="50" src={process.env.PUBLIC_URL + '/clublogos/' +  MyTeamMatchagainst[key] + '.jpg'} alt = "player" />
                         </ul>
                     </div>
                 </div>
