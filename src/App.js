@@ -64,7 +64,6 @@ class App extends Component {
         let allplayers = responseText[0].elements;
         console.clear();
         allplayers = Object.keys(allplayers).map((key, index) => allplayers[key].first_name)
-        console.log("allplayers", allplayers)
 
         let tofindfrommyTeam = Object.keys(picks).map((key, index) => { return  picks[key].element });
         let tofindfromElements = Object.keys(elements).map((key, index) => { return elements[key].id });
@@ -89,13 +88,12 @@ class App extends Component {
         const assists = [];
         const goalsScored = [];
         const myPlayersTeam = [];
-        const oldMyTeamMatchagainst = [];
+
         const teamhome = Object.keys(fixtures).map(key => fixtures[key].team_h); 
         teamhome.splice(0, 2);
         const teamaway = Object.keys(fixtures).map(key => fixtures[key].team_a); 
         teamaway.splice(0, 2);
-        console.log("!teamaway", teamaway.toString())
-        console.log("teamhome", teamhome.toString())
+
         Object.keys(elements).forEach((key, index) => {
           for (let i = 0; i < forimg.length; i++) {
             if (elements[key].id === forimg[i]) {
@@ -112,29 +110,28 @@ class App extends Component {
               goalsScored.push(elements[key].goals_scored);
 
               myPlayersTeam.push(elements[key].team);
-              console.log(myPlayersTeam.toString())
             }
           }
         })
-        console.log("myPlayersTeam----------", myPlayersTeam)
-        
-        for (let i = 0; i <= myPlayersTeam.length; i++) {
+        // console.log("myPlayersTeam----------", myPlayersTeam)
+        // console.log("fixtures", fixtures)
+        const eachevents = fixtures;
+        let against = [];
+        // eachevents[key].event === 1 this 1 has to be dynamic for 38 matches.
+        // slice also depending on how many games are played in a single game week
+        Object.keys(eachevents).forEach((key, index) => {
+          for (let i = 0; i < myPlayersTeam.length; i++) {
+            if (eachevents[key].event === 1) {
+              let found_index1 = teamaway.slice(0, 8).indexOf(myPlayersTeam[i]);
+              let found_index2 = teamhome.slice(0, 8).indexOf(myPlayersTeam[i]);
 
-          if (myPlayersTeam[i] === teamaway[i]) {
-            oldMyTeamMatchagainst.push(teamhome)
+              let pos = (teamhome[found_index1] || teamaway[found_index2]) || 0;
+              against.push(pos);
+            }
           }
-          if (myPlayersTeam[i] === teamhome[i]) {
-            oldMyTeamMatchagainst.push(teamaway)
           }
-          if (myPlayersTeam[i] !== teamaway[i] || myPlayersTeam[i] !== teamhome[i]) {
-            oldMyTeamMatchagainst.push("0")
-          }
-        }
-        const allEqual = arr => arr.every(v => v === arr[0])
-
+        )
         
-        console.log("myPlayersTeam", myPlayersTeam)
-        console.log("oldMyTeamMatchagainst", oldMyTeamMatchagainst[0])
         this.setState({
           myTeam: imgcode,
           events: events,
@@ -142,7 +139,7 @@ class App extends Component {
           fixtures: [fixtures],
           allPlayers: allplayers,
           myPlayersTeam: myPlayersTeam,
-          MyTeamMatchagainst: oldMyTeamMatchagainst[0]
+          MyTeamMatchagainst: against
         });
       }).catch((err) => {
         console.log(err);
@@ -152,7 +149,6 @@ class App extends Component {
   render() {
     return (
       <section className="main-container">
-        
         <center className="main-header-center"><h3>Fantasy Premier League</h3></center>
         <div className="one">
         <Data myTeam={this.state.myTeam} elements={this.state.elements}/>
