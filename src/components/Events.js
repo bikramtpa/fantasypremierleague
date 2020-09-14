@@ -7,7 +7,7 @@ import { getKeys } from 'eslint-visitor-keys';
 
 const clubs = ["null", "Arsenal", "Aston Villa", "Brighton", "Burnley", "Chelsea",
     "Crystal Palace",
-    "Everton", "Fulham", "Leeds utd.", "Leicester City", "Liverpool", "Manchester City",
+    "Everton", "Fulham", "Leicester City", "Leeds utd.", "Liverpool", "Manchester City",
     "Manchester utd.", "Newcastle utd.", "Sheff utd.",
     "Southampton", "Tottenham", "West Brom", "West Ham",
     "Wolves", "Wanderers"
@@ -43,7 +43,7 @@ const Events = ({ events, fixtures }) => {
                                 return  <ul class="list-group">
                                             <li class="list-group-item">
                                                 <img className="left-team" width="50" height="50" src={process.env.PUBLIC_URL + '/clublogos/' + fixtures[0][eventsindex].team_h + '.jpg'} alt = "player" />
-                                                <span className="fixture-text-center">{clubs[fixtures[0][eventsindex].team_h]} VS {clubs[fixtures[0][eventsindex].team_a]}</span>
+                                                <span className="fixture-text-center">{clubs[fixtures[0][eventsindex].team_h]} {fixtures[0][eventsindex].team_h} VS {fixtures[0][eventsindex].team_a} {clubs[fixtures[0][eventsindex].team_a]}</span>
                                                 <img className="right-team" width="50" height="50" src={process.env.PUBLIC_URL + '/clublogos/' + fixtures[0][eventsindex].team_a + '.jpg'} alt = "player" />
                                             </li>
                                         </ul>

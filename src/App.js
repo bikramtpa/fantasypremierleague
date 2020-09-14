@@ -29,6 +29,8 @@ class App extends Component {
       fixtures: [],
       gameweeks: [],
       allPlayers: [],
+      myPlayersTeam: [],
+      MyTeamMatchagainst: [],
     };
   }
 
@@ -86,8 +88,15 @@ class App extends Component {
         const nowCost = [];
         const assists = [];
         const goalsScored = [];
-        
-        Object.keys(elements).forEach(key => {
+        const myPlayersTeam = [];
+        const oldMyTeamMatchagainst = [];
+        const teamhome = Object.keys(fixtures).map(key => fixtures[key].team_h); 
+        teamhome.splice(0, 2);
+        const teamaway = Object.keys(fixtures).map(key => fixtures[key].team_a); 
+        teamaway.splice(0, 2);
+        console.log("!teamaway", teamaway.toString())
+        console.log("teamhome", teamhome.toString())
+        Object.keys(elements).forEach((key, index) => {
           for (let i = 0; i < forimg.length; i++) {
             if (elements[key].id === forimg[i]) {
               imgcode.push(elements[key].code);
@@ -101,15 +110,39 @@ class App extends Component {
               nowCost.push(elements[key].now_cost);
               assists.push(elements[key].assists);
               goalsScored.push(elements[key].goals_scored);
+
+              myPlayersTeam.push(elements[key].team);
+              console.log(myPlayersTeam.toString())
             }
           }
         })
+        console.log("myPlayersTeam----------", myPlayersTeam)
+        
+        for (let i = 0; i <= myPlayersTeam.length; i++) {
+
+          if (myPlayersTeam[i] === teamaway[i]) {
+            oldMyTeamMatchagainst.push(teamhome)
+          }
+          if (myPlayersTeam[i] === teamhome[i]) {
+            oldMyTeamMatchagainst.push(teamaway)
+          }
+          if (myPlayersTeam[i] !== teamaway[i] || myPlayersTeam[i] !== teamhome[i]) {
+            oldMyTeamMatchagainst.push("0")
+          }
+        }
+        const allEqual = arr => arr.every(v => v === arr[0])
+
+        
+        console.log("myPlayersTeam", myPlayersTeam)
+        console.log("oldMyTeamMatchagainst", oldMyTeamMatchagainst[0])
         this.setState({
           myTeam: imgcode,
           events: events,
           elements: [playerdetails, totalPoints, selectedPercentage, nowCost, assists, goalsScored],
           fixtures: [fixtures],
-          allPlayers: allplayers
+          allPlayers: allplayers,
+          myPlayersTeam: myPlayersTeam,
+          MyTeamMatchagainst: oldMyTeamMatchagainst[0]
         });
       }).catch((err) => {
         console.log(err);
@@ -119,14 +152,14 @@ class App extends Component {
   render() {
     return (
       <section className="main-container">
+        
         <center className="main-header-center"><h3>Fantasy Premier League</h3></center>
         <div className="one">
         <Data myTeam={this.state.myTeam} elements={this.state.elements}/>
         </div>
         <div className="two">
         <Events events={this.state.events} fixtures={this.state.fixtures}/>
-        
-        <MyPlayers myTeam={this.state.myTeam} elements={this.state.elements}events={this.state.events} fixtures={this.state.fixtures}/>
+        <MyPlayers myTeam={this.state.myTeam} elements={this.state.elements} myPlayersTeam={this.state.myPlayersTeam} MyTeamMatchagainst={this.state.MyTeamMatchagainst} events={this.state.events} fixtures={this.state.fixtures}/>
         </div>
       </section>
       
