@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import Data from './components/Data';
 import Events from './components/Events';
 import MyPlayers from './components/MyPlayers';
+import Footer from './components/Footer';
 import './App.css';
+
 
 const urls = [
   'http://localhost:8000/bootstrap-static',
@@ -17,6 +19,14 @@ const urls = [
   'https://fantasy.premierleague.com/api/event/1/live/',
   'https://fantasy.premierleague.com/api/me/'
 
+]
+
+const clubs = ["Blank Gameweek", "Arsenal", "Aston Villa", "Brighton", "Burnley", "Chelsea",
+  "Crystal Palace",
+  "Everton", "Fulham", "Leicester City", "Leeds utd.", "Liverpool", "Manchester City",
+  "Manchester utd.", "Newcastle utd.", "Sheff utd.",
+  "Southampton", "Tottenham", "West Brom", "West Ham",
+  "Wolves", "Wanderers"
 ]
 class App extends Component {
 
@@ -148,17 +158,28 @@ class App extends Component {
   
   render() {
     return (
-      <section className="main-container">
-        <center className="main-header-center"><h3>Fantasy Premier League</h3></center>
-        <div className="one">
-        <Data myTeam={this.state.myTeam} elements={this.state.elements}/>
-        </div>
+      <div>
+        <div className="main-header-center">
+          <center><h3>Fantasy Premier League</h3></center></div>
+        <div className="container">
+
+        <div className="body">
+        
+        <div className="side-by-components">
+          <div className="one">
+            <Data myTeam={this.state.myTeam} elements={this.state.elements}/>
+          </div>
         <div className="two">
-        <Events events={this.state.events} fixtures={this.state.fixtures}/>
-        <MyPlayers myTeam={this.state.myTeam} elements={this.state.elements} myPlayersTeam={this.state.myPlayersTeam} MyTeamMatchagainst={this.state.MyTeamMatchagainst} events={this.state.events} fixtures={this.state.fixtures}/>
+          <Events events={this.state.events} fixtures={this.state.fixtures} clubs={clubs} />
+          <MyPlayers clubs={clubs} myTeam={this.state.myTeam} elements={this.state.elements} myPlayersTeam={this.state.myPlayersTeam} MyTeamMatchagainst={this.state.MyTeamMatchagainst} events={this.state.events} fixtures={this.state.fixtures}/>
         </div>
-      </section>
-      
+          </div>
+        </div>
+        </div>
+        <div id="footer" class="container-fluid">
+              <Footer />
+          </div>
+    </div>
     )
   }
 }

@@ -5,19 +5,13 @@ import { getKeys } from 'eslint-visitor-keys';
 
 
 
-const clubs = ["null", "Arsenal", "Aston Villa", "Brighton", "Burnley", "Chelsea",
-    "Crystal Palace",
-    "Everton", "Fulham", "Leicester City", "Leeds utd.", "Liverpool", "Manchester City",
-    "Manchester utd.", "Newcastle utd.", "Sheff utd.",
-    "Southampton", "Tottenham", "West Brom", "West Ham",
-    "Wolves", "Wanderers"
-]
+
 
 // Idea for Next button implementation for different gameweeks
 // fixtures[0][eventsindex].event === 1  make this 1 dynamically change from UI or,
 // Eveen better if it changes automatically when the current gameweek changes to 2,3.. somewhere in api could be
 // and the condition for == null change to !== && ||
-const Events = ({ events, fixtures }) => {
+const Events = ({ events, fixtures, clubs }) => {
    //const keys = Object.keys(fixtures);
     const [count, setCount] = useState(0);
     function handleClick(e) {
