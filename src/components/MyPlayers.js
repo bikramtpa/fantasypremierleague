@@ -5,7 +5,7 @@ import '../App.css'
 // the elements has "team": 1, which is also in https://fantasy.premierleague.com/api/fixtures/?event=1
 // "team": 1 is of the team "team_a": 1 for any given gameweek. or team_h
 
-const MyPlayers = ({ myTeam, elements, myPlayersTeam, events, fixtures, MyTeamMatchagainst }) => {
+const MyPlayers = ({ myTeam, elements, myPlayersTeam, events, fixtures, MyTeamMatchagainst, clubs }) => {
     const handleClick = () => {
         //e.preventDefault();
         //console.log('The link was clicked.');
@@ -32,9 +32,13 @@ const MyPlayers = ({ myTeam, elements, myPlayersTeam, events, fixtures, MyTeamMa
                     <div className="card-body w3-card-4">
                         <ul className="inline">
                             <li className="li-left" key={Math.random()}>
-                                {elements[0][index]}
+                                    {elements[0][index]} <br />
+                                    <span>
+                                        ({clubs[myPlayersTeam[index]]})
+                                    </span>
                             </li>
-                           <img className="right-team" width="50" height="50" src={process.env.PUBLIC_URL + '/clublogos/' +  MyTeamMatchagainst[key] + '.jpg'} alt = "player" />
+                                <img className="right-team" width="50" height="50" src={process.env.PUBLIC_URL + '/clublogos/' + MyTeamMatchagainst[key] + '.jpg'} alt="player" />&nbsp;
+                                ({clubs[MyTeamMatchagainst[index]]})
                         </ul>
                     </div>
                 </div>

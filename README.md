@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 <img src="https://i.ibb.co/dBB4xk1/fpl.gif" alt="Awesome feature Game fixtures Added" />
-<img src="https://i.ibb.co/gdJZxQp/Screenshot-2020-09-15-at-1-17-39.png" alt="My teem players opponents" />
+<img src="https://i.ibb.co/sK3vrp6/Screenshot-2020-09-15-at-12-23-51.png" alt="My teem players opponents" />
 ## Available Scripts
 
 In the project directory, you can run:
@@ -70,3 +70,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+### why filter and map doesn't work in jsx at the same time
+Transform data to components
