@@ -19,20 +19,19 @@ const Events = ({ events, fixtures, clubs }) => {
         //console.log('The link was clicked.');
         return setCount(count + 1)
     }
-    
+
     return (
         <div className="w3-container">
-            
+
             <center><h4>Events</h4></center>
             {Object.keys(fixtures).map((key, index)  => (
                 <div className="card" key={key}>
                     <div className="card-body w3-card-4">
                         <h5 className="card-title"> <span className="gameweeks-span">{events[count].name}</span>
-                            <button onClick={handleClick} href="#" class="next round">&#8250;</button></h5>
-                            {/*<p>You clicked {count} times</p> */}
-                        
+                            <button onClick={handleClick} class="next round">&#8250;</button></h5>
+
                         <h6 className="card-subtitle mb-2 text-muted">{Object.keys(events).map((key, eventsindex) => {
-                            
+
                             if (fixtures[0][eventsindex].event === count + 1) {
                                 return  <ul class="list-group">
                                             <li class="list-group-item">
@@ -44,19 +43,7 @@ const Events = ({ events, fixtures, clubs }) => {
                             }
                         })}
                         </h6>
-                        <ul className="w3-ul">
-                            <li className="w3-bar" key={events[key].id}>
-                                <img src={kane} alt="player" className="w3-bar-item w3-circle w3-hide-small" />
-                                <span>
-                                    Most Selected: {events[key].most_selected} % <br />
-                                    Chip Plays: {events[key].chip_plays}  <br />
-                                </span>
-                            </li>
-                           
-                            <li className="w3-bar" key={events[index].id}>
-                                DeadLine: {events[key].deadline_time}
-                            </li>
-                        </ul>
+                        DeadLine: {events[key].deadline_time}
                     </div>
                 </div>
             ))}
