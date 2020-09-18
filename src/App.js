@@ -81,7 +81,7 @@ class App extends Component {
         let events = responseText[0].events;
         let allplayers = responseText[0].elements;
         console.clear();
-        console.log("events", events)
+        // console.log("events", events)
         allplayers = Object.keys(allplayers).map((key, index) => allplayers[key].first_name)
 
         let tofindfrommyTeam = Object.keys(picks).map((key, index) => { return  picks[key].element });
@@ -109,11 +109,12 @@ class App extends Component {
         let myPlayersTeam = [];
 
         const teamhome = Object.keys(fixtures).map(key => fixtures[key].team_h);
-        teamhome.splice(0, 2);
+        // teamhome.splice(0, 2);
         const teamaway = Object.keys(fixtures).map(key => fixtures[key].team_a);
-        teamaway.splice(0, 2);
+        // teamaway.splice(0, 2);
 
         Object.keys(elements).forEach((key, index) => {
+
           for (let i = 0; i < forimg.length; i++) {
             if (elements[key].id === forimg[i]) {
               imgcode.push(elements[key].code);
@@ -140,13 +141,13 @@ class App extends Component {
         // slice also depending on how many games are played in a single game week
         let against = [];
         // console.log("eachevents", eachevents.toString())
-        console.log("teamaway", teamaway.toString())
-        console.log("teamhome", teamhome.toString())
-        console.log("myPlayersTeam", myPlayersTeam.toString())
+        // console.log("teamaway", teamaway.toString())
+        // console.log("teamhome", teamhome.toString())
+        // console.log("myPlayersTeam", myPlayersTeam.toString())
         myPlayersTeam = new Array(25).fill(myPlayersTeam).flat()
-        console.log("myPlayersTeam", myPlayersTeam)
+        // console.log("myPlayersTeam", myPlayersTeam)
         Object.keys(eachevents).forEach((key, index) => {
-          for (let i = 0; i <= 38; i++) {
+          for (let i = 0; i < 380; i++) {
             if (eachevents[key].event === 2) {
               let found_index1 = teamaway.indexOf(myPlayersTeam[i]);
               let found_index2 = teamhome.indexOf(myPlayersTeam[i]);
@@ -157,7 +158,6 @@ class App extends Component {
             }
           }
         )
-
         this.setState({
           myTeam: imgcode,
           events: events,
@@ -170,6 +170,7 @@ class App extends Component {
       }).catch((err) => {
         console.log(err);
       });
+
   }
 
   render() {
@@ -178,9 +179,7 @@ class App extends Component {
         <div className="main-header-center">
           <center><h3>Fantasy Premier League</h3></center></div>
         <div className="container">
-
         <div className="body">
-
         <div className="side-by-components">
           <div className="one">
             <Data myTeam={this.state.myTeam} elements={this.state.elements}/>
@@ -193,8 +192,8 @@ class App extends Component {
         </div>
         </div>
         <div id="footer" className="container-fluid">
-              <Footer />
-          </div>
+          <Footer />
+        </div>
     </div>
     )
   }

@@ -21,18 +21,18 @@ const handleClick = (e) => {
 	// console.log("hsdcvkshdvcvckashjvc", fixtures[0])
 	for (var i = 0; i < myPlayersTeam.length; i++) {
 		var found = false;
-		for (var j = 0; j < 8; j++) {
+		for (var j = 0; j < 378; j++) {
 			// console.log("loop me everything", events[j].id)
 			// console.log("loop me everything", json[j].event)
-			console.log("salslasalslaslals", json[j].team_a)
-			if (json[j].event === 1) {
-				if (json[j].team_a == myPlayersTeam[i]) {
+			// console.log("salslasalslaslals", json[j].team_a)
+			if (json[j].event === count + 1) {
+				if (json[j].team_a === myPlayersTeam[i]) {
 					found = true;
 					// console.log(a[j].team_h)
 					myTeamMatchAgainst.push(json[j].team_h)
 					continue
 				}
-				if (json[j].team_h == myPlayersTeam[i]) {
+				if (json[j].team_h === myPlayersTeam[i]) {
 					found = true
 					// console.log(a[j].team_a)
 					myTeamMatchAgainst.push(json[j].team_a)
@@ -40,7 +40,7 @@ const handleClick = (e) => {
 				}
 			}
 		}
-		if (found == false) {
+		if (found === false) {
 			// console.log(0)
 			myTeamMatchAgainst.push(0)
 		}
@@ -54,10 +54,10 @@ return (
 	<center><h4>My Team's Fixtures</h4></center>
 	<div class="row">
 			<div class="col col-tabs">
-					All Players
+					My Players
 			</div>
 			<div class="col col-tabs">
-			G1 Against <a href="#" class="next round">›</a>
+			{Object.keys(fixtures).map(key => <p>{events[count].name}</p>)} <button onClick={handleClick} class="next round">&#8250;</button>
 			</div>
 	</div>
 	{
@@ -72,7 +72,7 @@ return (
 													</span>
 									</li>
 											<img className="right-team" width="50" height="50" src={process.env.PUBLIC_URL + '/clublogos/' + myTeamMatchAgainst[key] + '.jpg'} alt="player" />&nbsp;
-											({clubs[myTeamMatchAgainst[index]]})
+											<b>({clubs[myTeamMatchAgainst[index]]})</b>
 							</ul>
 					</div>
 			</div>
