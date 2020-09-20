@@ -57,9 +57,10 @@ app.post('/users/', async (req, res) => {
             password: hashedPassword
         }
         users.push(user)
-        res.status(201).send()
-    } catch {
-        res.status(500).send()
+        res.json(user)
+    } catch(error){
+        // res.json({"status": "Not OK!!"});
+        return next(error);
     }
 })
 
