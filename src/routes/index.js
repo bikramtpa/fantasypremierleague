@@ -2,17 +2,18 @@ var express = require('express');
 var router = express.Router();
 
 const users = [{
-  email: 'oceankrish76@gmail.com',
+  name: 'krishna',
   password: 'password'
 }];
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   // res.render('index', { title: 'Express' });
   res.send("Welcome to backend server")
 });
 
-router.post('/login', function (req, res) {
-  let result = users.find(user => user.email == req.body.email);
+router.post('/users', function (req, res) {
+  let result = users.find(user => user.name == req.body.name);
   if (result) {
     if (result.password == req.body.password) {
       res.status(200).send({

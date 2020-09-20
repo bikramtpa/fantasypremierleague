@@ -1,33 +1,29 @@
 import React, { Component } from 'react';
-import { Panel, Form, FormGroup, FormControl, Button } from 'react-bootstrap';
 import axios from 'axios';
 
-const divStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  /* marginTop: -10 */
-};
-
-const panelStyle = {
-  backgroundColor: 'rgba(255,255,255,0.5)',
-  border: 0,
-  paddingLeft: 20,
-  paddingRight: 20,
-  width: 300,
-};
-
-const buttonStyle = {
-  marginBottom: 0
-};
+const login = (e) => {
+  e.preventDefault();
+  let request = {
+    name: document.getElementById('name').value,
+    password: document.getElementById('pwd').value,
+  }
+  axios.post('http://localhost:8000/users/', request)
+    .then(resp => {
+      alert(resp.data.message);
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
 
 class LoginForm extends Component {
 
-  handleFormSubmit(e) {
-    e.preventDefault();
+  // handleFormSubmit(e) {
+  //   e.preventDefault();
 
-    console.log("FORM SUBMIT!");
+  //   console.log("FORM SUBMIT!");
 
-  }
+  // }
 
   render() {
     return (
@@ -35,9 +31,9 @@ class LoginForm extends Component {
         <h2>Login form</h2>
         <form onSubmit={(e) => login(e)} className="form-horizontal">
           <div className="form-group">
-            <label className="control-label col-sm-2" for="email">Email:</label>
+            <label className="control-label col-sm-2" for="name">name:</label>
             <div className="col-sm-10">
-              <input type="email" className="form-control" id="email" placeholder="Enter email" name="email" />
+              <input type="name" className="form-control" id="name" placeholder="Enter name" name="name" />
             </div>
           </div>
           <div className="form-group">
@@ -65,18 +61,3 @@ class LoginForm extends Component {
 }
 
 export default LoginForm;
-
-const login = (e) => {
-  e.preventDefault();
-  let request = {
-    email: document.getElementById('email').value,
-    password: document.getElementById('pwd').value,
-  }
-  axios.post('http://localhost:3000/login', request)
-    .then(resp => {
-      alert(resp.data.message);
-    })
-    .catch(err => {
-    console.log(err)
-  })
-}

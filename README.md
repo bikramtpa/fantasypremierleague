@@ -5,6 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 <img src="https://i.ibb.co/dBB4xk1/fpl.gif" alt="Awesome feature Game fixtures Added" />
 <img src="https://i.ibb.co/sK3vrp6/Screenshot-2020-09-15-at-12-23-51.png" alt="My teem players opponents" />
 <img src="https://i.ibb.co/zfDJ4CP/Screenshot-2020-09-20-at-13-24-16.png" alt="userlogin" />
+<img src="https://i.ibb.co/WfDLQ70/Screenshot-2020-09-20-at-17-54-07.png" alt="userlogin" />
+<img src="https://i.ibb.co/C9n1TzZ/Screenshot-2020-09-20-at-17-46-19.png" alt="userlogin" />
 
 ## Available Scripts
 

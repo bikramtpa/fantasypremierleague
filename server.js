@@ -9,10 +9,6 @@ var cors = require('cors')
 const bcrypt = require('bcrypt')
 var bodyParser = require('body-parser');
 
-const passport = require('passport')
-const flash = require('express-flash')
-const session = require('express-session')
-const methodOverride = require('method-override')
 // app.use(express.json())
 
 app.use(function (req, res, next) {
@@ -53,7 +49,7 @@ app.get('/users/', (req, res) => {
     res.json(users)
 })
 
-app.post('/users', async (req, res) => {
+app.post('/users/', async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
         const user = {
@@ -68,7 +64,7 @@ app.post('/users', async (req, res) => {
 })
 
 app.post('/users/login', async (req, res) => {
-    const user = users.find(user => user.name === req.body.name)
+    const user = users.find(user => user.name == req.body.name)
     if (user == null) {
         return res.status(400).send('Cannot find user')
     }
