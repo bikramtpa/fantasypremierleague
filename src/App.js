@@ -3,6 +3,11 @@ import Data from './components/Data';
 import Events from './components/Events';
 import MyPlayers from './components/MyPlayers';
 import Footer from './components/Footer';
+import LoginForm from './components/LoginPage/LoginForm';
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
 import './App.css';
 
 
@@ -28,8 +33,8 @@ const clubs = ["Blank Gameweek", "Arsenal", "Aston Villa", "Brighton", "Burnley"
   "Southampton", "Tottenham", "West Brom", "West Ham",
   "Wolves", "Wanderers"
 ]
-class App extends Component {
 
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -175,13 +180,16 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <Router>
+        <div>
+        <LoginForm />
         <div className="main-header-center">
           <center><h3>Fantasy Premier League</h3></center></div>
         <div className="container">
         <div className="body">
         <div className="side-by-components">
           <div className="one">
+                <Route path="/login" component={LoginForm} />
             <Data myTeam={this.state.myTeam} elements={this.state.elements}/>
           </div>
         <div className="two">
@@ -194,7 +202,8 @@ class App extends Component {
         <div id="footer" className="container-fluid">
           <Footer />
         </div>
-    </div>
+        </div>
+      </Router>
     )
   }
 }
